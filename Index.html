@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <base target="_top">
+  <script>
+      function loadTableData(items,id) {
+      const table = document.getElementById(id);
+      for(let i = 0; i < items.length; i++){
+          let row = table.insertRow();
+          for(let j = 0; j < items[i].length;j++){
+            let cella = row.insertCell(j);
+            cella.innerHTML = items[i][j];
+          }
+      }
+      }
+       function onSuccess1(success) {
+         var id = "tab1body";
+         loadTableData(success,id);
+      }
+
+      function onSuccess2(success) {
+         var id = "tab2body";
+         loadTableData(success,id);
+      }
+
+      function onSuccess3(success){
+        var id = "tab3body";
+        loadTableData(success,id);
+      }
+
+      function onSuccess4(success){
+        var id = "tab4body";
+        loadTableData(success,id);
+      }
+
+      function onFailure(error) {
+        var div = document.getElementById('output');
+        div.innerHTML = "ERROR: " + error.message;
+      }
+
+      var myRunner = google.script.run.withSuccessHandler(onSuccess1).getMediaMediana();
+      var myRunner2 = google.script.run.withSuccessHandler(onSuccess2).getMediaTypePrice();
+      var myRunner3 = google.script.run.withSuccessHandler(onSuccess3).getMediaTypeAccess();
+      var myRunner4 = google.script.run.withSuccessHandler(onSuccess4).getBoredData();
+
+      google.script.run.withFailureHandler(onFailure)
+          .fallimento();
+
+  </script>
+</head>
+
+<body>
+  <div id="output"></div>
+  <div class="container">
+    <table id="tab1" class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Tipo dato</th>
+        <th>Risultato</th>
+      </tr>
+    </thead>
+    <tbody id="tab1body"></tbody>
+  </table>
+  <table id="tab2" class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Prezzo medio per Type</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody id="tab2body"></tbody>
+  </table>
+  <table id="tab3" class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Prezzo medio per Accessibility</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody id="tab3body"></tbody>
+  </table>
+  <table id="tab4" class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>activity</th>
+        <th>type</th>
+        <th>participants</th>
+        <th>price</th>
+        <th>link</th>
+        <th>key</th>
+        <th>accessibility</th>
+      </tr>
+    </thead>
+    <tbody id="tab4body"></tbody>
+  </table>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>
